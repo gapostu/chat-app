@@ -42,8 +42,8 @@ const Message = ({
       >
         <div
           className={cn('px-4 py-2 rounded-lg max-w-[70%]', {
-            'bg-primary text-primary-foreground': fromCurrentUser,
-            'bg-secondary text-secondary-foreground': !fromCurrentUser,
+            'bg-orange-200 text-secondary-foreground': fromCurrentUser,
+            'bg-red-200 text-secondary-foreground': !fromCurrentUser,
             'rounded-br-none': !lastByUser && fromCurrentUser,
             'rounded-bl-none': !lastByUser && !fromCurrentUser,
           })}
@@ -60,7 +60,7 @@ const Message = ({
           ) : null}
           <p
             className={cn(`text-xs flex w-full my-1`, {
-              'text-primary-foreground justify-end': fromCurrentUser,
+              'text-secondary-foreground justify-end': fromCurrentUser,
               'text-secondary-foreground justify-start': !fromCurrentUser,
             })}
           >
