@@ -3,7 +3,7 @@
 import { api } from '@/convex/_generated/api';
 import { Id } from '@/convex/_generated/dataModel';
 import { useQuery } from 'convex/react';
-import React, { Dispatch, SetStateAction, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Message from './Message';
 import { useMutationState } from '@/hooks/useMutationState';
 import {
@@ -15,16 +15,16 @@ import {
 import { useConversation } from '@/hooks/useConversation';
 // import { CallRoom } from "./CallRoom";
 
-type Props = {
-  members: {
-    _id?: Id<'users'>;
-    lastSeenMessageId?: Id<'messages'>;
-    username?: string;
-    [key: string]: any;
-  }[];
-  callType: 'audio' | 'video' | null;
-  setCallType: Dispatch<SetStateAction<'audio' | 'video' | null>>;
-};
+// type Props = {
+//   members: {
+//     _id?: Id<'users'>;
+//     lastSeenMessageId?: Id<'messages'>;
+//     username?: string;
+//     [key: string]: any;
+//   }[];
+//   // callType: 'audio' | 'video' | null;
+//   // setCallType: Dispatch<SetStateAction<'audio' | 'video' | null>>;
+// };
 
 const Body = () => {
   const { conversationId } = useConversation();
@@ -42,39 +42,39 @@ const Body = () => {
         messageId: messages[0].message._id,
       });
     }
-  }, [messages?.length, conversationId]);
+  }, [messages?.length, conversationId, markRead]);
 
-  const formatSeenBy = (names: string[]) => {
-    switch (names.length) {
-      case 1:
-        return (
-          <p className="text-muted-foreground text-sm text-right">{`Seen by ${names[0]}`}</p>
-        );
-      case 2:
-        return (
-          <p className="text-muted-foreground text-sm text-right">{`Seen by ${names[0]} and ${names[1]}`}</p>
-        );
-      default:
-        return (
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger>
-                <p className="text-muted-foreground text-sm text-right">{`Seen by ${
-                  names[0]
-                }, ${names[1]}, and ${names.length - 2} more`}</p>
-              </TooltipTrigger>
-              <TooltipContent>
-                <ul>
-                  {names.map((name, index) => {
-                    return <li key={index}>{name}</li>;
-                  })}
-                </ul>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-        );
-    }
-  };
+  // const formatSeenBy = (names: string[]) => {
+  //   switch (names.length) {
+  //     case 1:
+  //       return (
+  //         <p className="text-muted-foreground text-sm text-right">{`Seen by ${names[0]}`}</p>
+  //       );
+  //     case 2:
+  //       return (
+  //         <p className="text-muted-foreground text-sm text-right">{`Seen by ${names[0]} and ${names[1]}`}</p>
+  //       );
+  //     default:
+  //       return (
+  //         <TooltipProvider>
+  //           <Tooltip>
+  //             <TooltipTrigger>
+  //               <p className="text-muted-foreground text-sm text-right">{`Seen by ${
+  //                 names[0]
+  //               }, ${names[1]}, and ${names.length - 2} more`}</p>
+  //             </TooltipTrigger>
+  //             <TooltipContent>
+  //               <ul>
+  //                 {names.map((name, index) => {
+  //                   return <li key={index}>{name}</li>;
+  //                 })}
+  //               </ul>
+  //             </TooltipContent>
+  //           </Tooltip>
+  //         </TooltipProvider>
+  //       );
+  //   }
+  // };
 
   // const getSeenMessage = (messageId: Id<'messages'>, senderId: Id<'users'>) => {
   //   const seenUsers = members
