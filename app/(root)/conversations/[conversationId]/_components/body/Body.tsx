@@ -6,12 +6,6 @@ import { useQuery } from 'convex/react';
 import React, { useEffect } from 'react';
 import Message from './Message';
 import { useMutationState } from '@/hooks/useMutationState';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
 import { useConversation } from '@/hooks/useConversation';
 // import { CallRoom } from "./CallRoom";
 
@@ -42,7 +36,7 @@ const Body = () => {
         messageId: messages[0].message._id,
       });
     }
-  }, [messages?.length, conversationId, markRead]);
+  }, [messages?.length, messages, conversationId, markRead]);
 
   // const formatSeenBy = (names: string[]) => {
   //   switch (names.length) {

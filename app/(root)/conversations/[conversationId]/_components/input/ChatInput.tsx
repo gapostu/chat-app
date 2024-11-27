@@ -21,20 +21,19 @@ import {
 } from '@/components/ui/form';
 import { useConversation } from '@/hooks/useConversation';
 //import MessageActionsPopover from './MessageActionsPopover';
-import { useTheme } from 'next-themes';
 //import EmojiPicker, { Theme } from 'emoji-picker-react';
 
-type ChatInputProps = {}; // eslint-disable-line no-use-before-define
+type ChatInputProps = {}; // eslint-disable-line
 
 const chatMessageSchema = z.object({
   content: z.string().min(1, { message: "This field can't be empty" }),
 });
 
 const ChatInput: FC<ChatInputProps> = ({}) => {
-  const emojiPickerRef = useRef<any>(null); // eslint-disable-line no-use-before-define
-  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
-  const [emojiPickerOpen, setEmojiPickerOpen] = useState(false); // eslint-disable-line no-use-before-define
-  const [cursorPosition, setCursorPosition] = useState(0);
+  const emojiPickerRef = useRef<any>(null); // eslint-disable-line
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null); // eslint-disable-line
+  const [emojiPickerOpen, setEmojiPickerOpen] = useState(false); // eslint-disable-line
+  const [cursorPosition, setCursorPosition] = useState(0); // eslint-disable-line
 
   const { conversationId } = useConversation();
 
@@ -67,9 +66,9 @@ const ChatInput: FC<ChatInputProps> = ({}) => {
     },
   });
 
-  const content = form.watch('content', '');
+  // const content = form.watch('content', '');
 
-  // eslint-disable-next-line no-use-before-define
+  // eslint-disable-next-line
   const handleInputChange = (event: any) => {
     const { value, selectionStart } = event.target;
     if (selectionStart !== null) {

@@ -2,7 +2,7 @@ import React from 'react';
 import DesktopNav from './nav/DesktopNav';
 import MobileNav from './nav/MobileNav';
 
-type Props = React.PropsWithChildren<{}>; // eslint-disable-next-line no-use-before-define
+type Props = React.PropsWithChildren<{}>; // eslint-disable-line
 
 const SidebarWrapper = ({ children }: Props) => {
   return (

@@ -22,8 +22,8 @@ const ConversationPage = () => {
     id: params.conversationId as Id<'conversations'>,
   });
   const [removeFriendDialogOpen, setRemoveFriendDialogOpen] = useState(false);
-  const [deleteGroupDialogOpen, setDeleteGroupDialogOpen] = useState(false);
-  const [leaveGroupDialogOpen, setLeaveGroupDialogOpen] = useState(false);
+  const [deleteGroupDialogOpen, setDeleteGroupDialogOpen] = useState(false); // eslint-disable-line
+  const [leaveGroupDialogOpen, setLeaveGroupDialogOpen] = useState(false); // eslint-disable-line
   // const [callType, setCallType] = useState<'audio' | 'video' | null>(null);
 
   return conversation === undefined ? (
