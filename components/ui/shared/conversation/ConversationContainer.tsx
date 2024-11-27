@@ -1,7 +1,7 @@
 import { Card } from '@/components/ui/card';
 import React from 'react';
 
-type Props = React.PropsWithChildren<{}>;
+type Props = React.PropsWithChildren<{}>; // eslint-disable-next-line no-use-before-define
 
 const ConversationContainer = ({ children }: Props) => {
   return (

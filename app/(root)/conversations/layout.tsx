@@ -7,7 +7,7 @@ import { Loader2 } from 'lucide-react';
 import React from 'react';
 import DMConversationItem from './_components/DMConversationItem';
 
-type Props = React.PropsWithChildren<{}>;
+type Props = React.PropsWithChildren<{}>; // eslint-disable-next-line no-use-before-define
 
 const ConversationsLayout = ({ children }: Props) => {
   const conversations = useQuery(api.conversations.get);

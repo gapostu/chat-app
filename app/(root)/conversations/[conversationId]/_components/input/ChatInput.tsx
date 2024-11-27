@@ -24,21 +24,21 @@ import { useConversation } from '@/hooks/useConversation';
 import { useTheme } from 'next-themes';
 //import EmojiPicker, { Theme } from 'emoji-picker-react';
 
-type ChatInputProps = {};
+type ChatInputProps = {}; // eslint-disable-line no-use-before-define
 
 const chatMessageSchema = z.object({
   content: z.string().min(1, { message: "This field can't be empty" }),
 });
 
 const ChatInput: FC<ChatInputProps> = ({}) => {
-  const emojiPickerRef = useRef<any>(null);
+  const emojiPickerRef = useRef<any>(null); // eslint-disable-line no-use-before-define
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
-  const [emojiPickerOpen, setEmojiPickerOpen] = useState(false);
+  const [emojiPickerOpen, setEmojiPickerOpen] = useState(false); // eslint-disable-line no-use-before-define
   const [cursorPosition, setCursorPosition] = useState(0);
 
   const { conversationId } = useConversation();
 
-  const { theme } = useTheme();
+  // const { theme } = useTheme();
 
   const { mutate: createMessage, pending } = useMutationState(
     api.message.create
@@ -69,6 +69,7 @@ const ChatInput: FC<ChatInputProps> = ({}) => {
 
   const content = form.watch('content', '');
 
+  // eslint-disable-next-line no-use-before-define
   const handleInputChange = (event: any) => {
     const { value, selectionStart } = event.target;
     if (selectionStart !== null) {
@@ -77,17 +78,17 @@ const ChatInput: FC<ChatInputProps> = ({}) => {
     }
   };
 
-  const insertEmoji = (emoji: string) => {
-    const newText = [
-      content.substring(0, cursorPosition),
-      emoji,
-      content.substring(cursorPosition),
-    ].join('');
+  // const insertEmoji = (emoji: string) => {
+  //   const newText = [
+  //     content.substring(0, cursorPosition),
+  //     emoji,
+  //     content.substring(cursorPosition),
+  //   ].join('');
 
-    form.setValue('content', newText);
+  //   form.setValue('content', newText);
 
-    setCursorPosition(cursorPosition + emoji.length);
-  };
+  //   setCursorPosition(cursorPosition + emoji.length);
+  // };
 
   const handleSubmit = async (values: z.infer<typeof chatMessageSchema>) => {
     createMessage({

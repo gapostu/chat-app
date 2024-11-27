@@ -2,15 +2,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
 import ConvexClientProvider from '@/providers/ConvexClientProvider';
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from '@clerk/nextjs';
 import { TooltipProvider } from '@/components/ui/tooltip';
-import { ThemeProvider } from '@/components/ui/theme/theme-provider';
 import { Toaster } from '@/components/ui/sonner';
 
 const geistSans = localFont({

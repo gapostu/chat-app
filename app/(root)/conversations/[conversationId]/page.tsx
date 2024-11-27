@@ -5,7 +5,7 @@ import { api } from '@/convex/_generated/api';
 import { Id } from '@/convex/_generated/dataModel';
 import { useQuery } from 'convex/react';
 import { Loader2 } from 'lucide-react';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Header from './_components/Header';
 import { useParams } from 'next/navigation';
 import Body from './_components/body/Body';
@@ -13,9 +13,9 @@ import ChatInput from './_components/input/ChatInput';
 import RemoveFriendDialog from './_components/dialogs/RemoveFriendDialog';
 
 //type Props = { params: { conversationId: Id<'conversations'> } };
-type Props = {};
+// type Props = {};
 
-const ConversationPage = ({}: Props) => {
+const ConversationPage = () => {
   const params = useParams();
 
   const conversation = useQuery(api.conversation.get, {
@@ -24,7 +24,7 @@ const ConversationPage = ({}: Props) => {
   const [removeFriendDialogOpen, setRemoveFriendDialogOpen] = useState(false);
   const [deleteGroupDialogOpen, setDeleteGroupDialogOpen] = useState(false);
   const [leaveGroupDialogOpen, setLeaveGroupDialogOpen] = useState(false);
-  const [callType, setCallType] = useState<'audio' | 'video' | null>(null);
+  // const [callType, setCallType] = useState<'audio' | 'video' | null>(null);
 
   return conversation === undefined ? (
     <div className="w-full h-full flex items-center justify-center">

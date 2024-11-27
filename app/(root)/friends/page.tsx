@@ -4,15 +4,15 @@ import ConversationFallback from '@/components/ui/shared/conversation/Conversati
 import ItemList from '@/components/ui/shared/item-list/ItemList';
 import React from 'react';
 import AddFriendDialog from './_components/AddFriendDialog';
-import NoSSR from './_components/NoSSR';
+// import NoSSR from './_components/NoSSR';
 import { useQuery } from 'convex/react';
 import { api } from '@/convex/_generated/api';
 import Request from './_components/Request';
 import { Loader2 } from 'lucide-react';
 
-type Props = {};
+// type Props = {};
 
-const FriendsPage = (props: Props) => {
+const FriendsPage = () => {
   const requests = useQuery(api.requests.get);
   return (
     <>
