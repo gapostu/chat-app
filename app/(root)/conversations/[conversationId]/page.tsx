@@ -11,6 +11,8 @@ import { useParams } from 'next/navigation';
 import Body from './_components/body/Body';
 import ChatInput from './_components/input/ChatInput';
 import RemoveFriendDialog from './_components/dialogs/RemoveFriendDialog';
+import DeleteGroupDialog from './_components/dialogs/DeleteGroupDialog';
+import LeaveGroupDialog from './_components/dialogs/LeaveGroupDialog';
 
 //type Props = { params: { conversationId: Id<'conversations'> } };
 // type Props = {};
@@ -40,6 +42,16 @@ const ConversationPage = () => {
         conversationId={params.conversationId as Id<'conversations'>}
         open={removeFriendDialogOpen}
         setOpen={setRemoveFriendDialogOpen}
+      />
+      <DeleteGroupDialog
+        conversationId={params.conversationId as Id<'conversations'>}
+        open={deleteGroupDialogOpen}
+        setOpen={setDeleteGroupDialogOpen}
+      />
+      <LeaveGroupDialog
+        conversationId={params.conversationId as Id<'conversations'>}
+        open={leaveGroupDialogOpen}
+        setOpen={setLeaveGroupDialogOpen}
       />
       <Header
         name={
@@ -74,7 +86,17 @@ const ConversationPage = () => {
         }
         // setCallType={setCallType}
       />
-      <Body />
+      <Body
+        members={
+          conversation.isGroup
+            ? conversation.otherMembers
+              ? conversation.otherMembers
+              : []
+            : conversation.otherMember
+              ? [conversation.otherMember]
+              : []
+        }
+      />
       <ChatInput />
     </ConversationContainer>
   );
