@@ -7,6 +7,7 @@ import { Loader2 } from 'lucide-react';
 import React from 'react';
 import DMConversationItem from './_components/DMConversationItem';
 import CreateGroupDialog from './_components/CreateGroupDialog';
+import GroupConversationItem from './_components/GroupConversationItem';
 
 type Props = React.PropsWithChildren<{}>; // eslint-disable-line
 const ConversationsLayout = ({ children }: Props) => {
@@ -20,15 +21,25 @@ const ConversationsLayout = ({ children }: Props) => {
               No conversations found.
             </p>
           ) : (
-            conversations.map((conversations) => {
-              return conversations.conversation.isGroup ? null : (
+            conversations.map((conversation) => {
+              return conversation.conversation.isGroup ? (
+                <GroupConversationItem
+                  key={conversation.conversation._id}
+                  id={conversation.conversation._id}
+                  name={conversation.conversation.name || ''}
+                  lastMessageSender={conversation.lastMessage?.sender}
+                  lastMessageContent={conversation.lastMessage?.content}
+                  // unseenCount={conversation.unseenCount}
+                />
+              ) : (
                 <DMConversationItem
-                  key={conversations.conversation._id}
-                  id={conversations.conversation._id}
-                  username={conversations.otherMember?.username || ''}
-                  imageUrl={conversations.otherMember?.imageUrl || ''}
-                  lastMessageContent={conversations.lastMessage?.content}
-                  lastMessageSender={conversations.lastMessage?.sender}
+                  key={conversation.conversation._id}
+                  id={conversation.conversation._id}
+                  username={conversation.otherMember?.username || ''}
+                  imageUrl={conversation.otherMember?.imageUrl || ''}
+                  lastMessageSender={conversation.lastMessage?.sender}
+                  lastMessageContent={conversation.lastMessage?.content}
+                  // unseenCount={conversation.unseenCount}
                 />
               );
             })
