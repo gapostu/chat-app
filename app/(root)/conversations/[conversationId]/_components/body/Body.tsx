@@ -20,7 +20,7 @@ type Props = {
     _id?: Id<'users'>;
     lastSeenMessageId?: Id<'messages'>;
     username?: string;
-    [key: string]: any;
+    // [key: string]: any;
   }[];
   // callType: 'audio' | 'video' | null;
   // setCallType: Dispatch<SetStateAction<'audio' | 'video' | null>>;
