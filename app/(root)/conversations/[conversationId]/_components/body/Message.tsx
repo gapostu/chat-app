@@ -3,6 +3,7 @@ import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import ImagePreview from './ImagePreview';
 
 type Props = {
   fromCurrentUser: boolean;
@@ -54,7 +55,7 @@ const Message = ({
             </p>
           ) : null}
           {/* {type === "file" ? <FilePreview url={content[0]} /> : null} */}
-          {/* {type === "image" ? <ImagePreview urls={content} /> : null} */}
+          {type === 'image' ? <ImagePreview urls={content} /> : null}
           {type === 'call' ? (
             <Badge variant="secondary">Joined Call</Badge>
           ) : null}
