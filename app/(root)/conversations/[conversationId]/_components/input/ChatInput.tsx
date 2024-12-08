@@ -20,8 +20,10 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { useConversation } from '@/hooks/useConversation';
+import MessageActionsPopover from './MessageActionsPopover';
 //import MessageActionsPopover from './MessageActionsPopover';
-//import EmojiPicker, { Theme } from 'emoji-picker-react';
+import EmojiPicker, { Theme } from 'emoji-picker-react';
+import { useTheme } from 'next-themes';
 
 type ChatInputProps = {}; // eslint-disable-line
 
@@ -37,7 +39,7 @@ const ChatInput: FC<ChatInputProps> = ({}) => {
 
   const { conversationId } = useConversation();
 
-  // const { theme } = useTheme();
+  const { theme } = useTheme();
 
   const { mutate: createMessage, pending } = useMutationState(
     api.message.create
@@ -66,7 +68,7 @@ const ChatInput: FC<ChatInputProps> = ({}) => {
     },
   });
 
-  // const content = form.watch('content', '');
+  const content = form.watch('content', '');
 
   // eslint-disable-next-line
   const handleInputChange = (event: any) => {
@@ -77,17 +79,17 @@ const ChatInput: FC<ChatInputProps> = ({}) => {
     }
   };
 
-  // const insertEmoji = (emoji: string) => {
-  //   const newText = [
-  //     content.substring(0, cursorPosition),
-  //     emoji,
-  //     content.substring(cursorPosition),
-  //   ].join('');
+  const insertEmoji = (emoji: string) => {
+    const newText = [
+      content.substring(0, cursorPosition),
+      emoji,
+      content.substring(cursorPosition),
+    ].join('');
 
-  //   form.setValue('content', newText);
+    form.setValue('content', newText);
 
-  //   setCursorPosition(cursorPosition + emoji.length);
-  // };
+    setCursorPosition(cursorPosition + emoji.length);
+  };
 
   const handleSubmit = async (values: z.infer<typeof chatMessageSchema>) => {
     createMessage({
@@ -111,7 +113,7 @@ const ChatInput: FC<ChatInputProps> = ({}) => {
   return (
     <Card className="w-full p-2 rounded-lg relative">
       <div className="absolute bottom-16" ref={emojiPickerRef}>
-        {/* <EmojiPicker
+        <EmojiPicker
           open={emojiPickerOpen}
           theme={theme as Theme}
           onEmojiClick={(emojiDetails) => {
@@ -119,10 +121,10 @@ const ChatInput: FC<ChatInputProps> = ({}) => {
             setEmojiPickerOpen(false);
           }}
           lazyLoadEmojis
-        /> */}
+        />
       </div>
-      <div className="flex gap-2 items-end w-full">
-        {/* <MessageActionsPopover setEmojiPickerOpen={setEmojiPickerOpen} /> */}
+      <div className="flex gap-2 items-center w-full">
+        <MessageActionsPopover setEmojiPickerOpen={setEmojiPickerOpen} />
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(handleSubmit)}
